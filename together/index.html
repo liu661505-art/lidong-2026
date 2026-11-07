@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5">
+  <meta name="theme-color" content="#050a14">
+  <title>立冬 · 和你一起走到冬天</title>
+  <meta name="description" content="2026 年立冬，和你一起走到冬天。一场只属于我们的雪，和一封写在立冬的信。">
+  <meta property="og:title" content="立冬 · 和你一起走到冬天">
+  <meta property="og:description" content="今朝若是同淋雪，此生也算共白头。">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2v20M3.34 7l17.32 10M3.34 17L20.66 7' fill='none' stroke='%23cfe6ff' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="sky" aria-hidden="true">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="glow glow-c"></div>
+    <div class="grain"></div>
+  </div>
+
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <main id="story">
+
+    <!-- 00 · 首屏 -->
+    <section class="hero" id="hero">
+      <div class="hero-stars" aria-hidden="true"></div>
+      <div class="hero-moon" aria-hidden="true"></div>
+
+      <div class="hero-inner" id="heroInner">
+        <p class="eyebrow load" style="--d:.15s">
+          <span class="eyebrow-line"></span>
+          二十四节气 · 第十九
+          <span class="eyebrow-line"></span>
+        </p>
+
+        <h1 class="hero-title" aria-label="立冬">
+          <span class="char" style="--i:0">立</span><span class="char" style="--i:1">冬</span>
+          <span class="hero-seal" aria-hidden="true">冬</span>
+        </h1>
+
+        <p class="hero-sub load" style="--d:.85s">和你一起，走到冬天</p>
+
+        <div class="hero-meta load" style="--d:1.02s">
+          <span class="hero-date">2026.11.07</span>
+          <span class="hero-sep"></span>
+          <span>周六</span>
+          <span class="hero-sep"></span>
+          <span class="num">17:52</span>
+        </div>
+
+        <div class="today-badge load" style="--d:1.18s">
+          <span class="today-dot" aria-hidden="true"></span>
+          <span class="today-label">今日立冬</span>
+          <span class="today-sep" aria-hidden="true"></span>
+          <span class="today-yi">宜拥抱</span>
+        </div>
+      </div>
+
+      <div class="hero-foot">
+        <p class="tap-hint" id="tapHint"><span class="tap-dot" aria-hidden="true"></span>轻触屏幕，落一场只属于我们的雪</p>
+        <a class="scroll-cue" href="#prologue" aria-label="往下看，序"><span></span></a>
+      </div>
+    </section>
+
+    <!-- 01 · 序 -->
+    <section class="section prologue" id="prologue">
+      <div class="wrap">
+        <p class="label reveal"><span>01</span> 序</p>
+
+        <div class="lit-text" id="litText">
+          <span class="lit-line">立冬，是冬天的第一个节气。</span>
+          <span class="lit-line">水始冰，地始冻，万物收藏。</span>
+          <span class="lit-line">而我关于冬天的所有想象，</span>
+          <span class="lit-line warm">都从「和你一起」开始。</span>
+        </div>
+
+        <p class="aside reveal">从今天起，白昼会一天天变短。<br>而我们还有一整个冬天，慢慢过。</p>
+
+        <p class="almanac-line reveal">
+          <span class="num">2026 / 11 / 07</span>
+          <span class="almanac-dot" aria-hidden="true"></span>
+          水始冰 · 地始冻 · 万物收藏
+        </p>
+      </div>
+    </section>
+
+    <!-- 02 · 四季 -->
+    <section class="section seasons" id="seasons">
+      <div class="wrap">
+        <p class="label reveal"><span>02</span> 来路</p>
+        <h2 class="h2 reveal">从一场春风，<br>走到一场雪</h2>
+        <p class="lede reveal">四季很长，幸好每一程都有你。</p>
+
+        <ol class="season-list">
+          <li class="season-item spring reveal">
+            <div class="season-meta"><span class="num">01</span><span>SPRING</span></div>
+            <div class="season-body">
+              <span class="season-name">春</span>
+              <div class="season-copy">
+                <span class="season-tag">遇见</span>
+                <p>风变软的那天，<br>我第一次认真看你。</p>
+              </div>
+            </div>
+          </li>
+          <li class="season-item summer reveal" style="--d:.06s">
+            <div class="season-meta"><span class="num">02</span><span>SUMMER</span></div>
+            <div class="season-body">
+              <span class="season-name">夏</span>
+              <div class="season-copy">
+                <span class="season-tag">同行</span>
+                <p>白昼很长，<br>长到足够我们走很远。</p>
+              </div>
+            </div>
+          </li>
+          <li class="season-item autumn reveal" style="--d:.12s">
+            <div class="season-meta"><span class="num">03</span><span>AUTUMN</span></div>
+            <div class="season-body">
+              <span class="season-name">秋</span>
+              <div class="season-copy">
+                <span class="season-tag">并肩</span>
+                <p>叶子落下来，<br>喜欢却越来越重。</p>
+              </div>
+            </div>
+          </li>
+          <li class="season-item winter reveal" style="--d:.18s">
+            <div class="season-meta"><span class="num">04</span><span>WINTER</span></div>
+            <div class="season-body">
+              <span class="season-name">冬</span>
+              <div class="season-copy">
+                <span class="season-tag">此刻</span>
+                <p>雪落下来的时候，<br>我们刚好走到立冬。</p>
+              </div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 03 · 留白 -->
+    <section class="section snowwrite" id="snowwrite">
+      <div class="wrap">
+        <p class="label reveal"><span>03</span> 留白</p>
+        <h2 class="h2 reveal">在雪地上，<br>写一句想说的话</h2>
+        <p class="lede reveal">写下的字会留在雪上。想重来，抹平雪面就好。</p>
+      </div>
+
+      <div class="snowpad reveal" id="snowpad">
+        <canvas id="writeCanvas" aria-label="可以写字的雪地画布"></canvas>
+        <div class="snowpad-hint" id="snowpadHint">
+          <span class="hint-flake" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <path d="M12 2v20M3.34 7l17.32 10M3.34 17L20.66 7M12 5l-2.4-2.4M12 5l2.4-2.4M12 19l-2.4 2.4M12 19l2.4 2.4"/>
+            </svg>
+          </span>
+          <span>在这里写字</span>
+        </div>
+        <div class="snowpad-tools">
+          <button type="button" id="clearSnow">抹平雪面</button>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <p class="footnote reveal">有些话不用留下，写下的那一刻，雪已经听见了。</p>
+      </div>
+    </section>
+
+    <!-- 04 · 一封信 -->
+    <section class="section letter-section" id="letter">
+      <div class="wrap">
+        <p class="label center reveal"><span>04</span> 一封信</p>
+        <h2 class="h2 center reveal">写在这个立冬</h2>
+
+        <div class="letter-wrap reveal" id="letterWrap">
+          <button class="envelope" id="envelope" type="button" aria-expanded="false" aria-controls="paper" aria-label="拆开这封写在立冬的信">
+            <span class="env-flap" aria-hidden="true"></span>
+            <span class="env-face" aria-hidden="true">
+              <span class="env-to">TO · 我亲爱的你</span>
+              <span class="env-small">写于二〇二六 · 立冬</span>
+              <span class="env-open">轻触拆开</span>
+            </span>
+            <span class="env-seal" aria-hidden="true">冬</span>
+          </button>
+
+          <article class="paper" id="paper" tabindex="-1" aria-hidden="true">
+            <p class="paper-date num">2026 · 11 · 07</p>
+            <div class="paper-body" id="letterBody"></div>
+            <!-- 信的落款：改这里 -->
+            <p class="paper-sign" id="paperSign">爱你的宝宝<span class="sign-date">立冬 · 夜</span></p>
+          </article>
+        </div>
+
+        <button class="replay" id="replayLetter" type="button" hidden>再读一遍</button>
+      </div>
+    </section>
+
+    <!-- 05 · 白头 -->
+    <section class="section finale" id="finale">
+      <div class="wrap finale-wrap">
+        <p class="label center reveal"><span>05</span> 白头</p>
+
+        <h2 class="poem">
+          <span class="poem-line reveal">今朝若是同淋雪</span>
+          <span class="poem-line reveal">此生也算共白头</span>
+        </h2>
+
+        <p class="finale-sub reveal">所以，和我一起淋一场雪吧。</p>
+
+        <button class="storm-btn reveal" id="stormBtn" type="button">
+          <span class="storm-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <path d="M12 2v20M3.34 7l17.32 10M3.34 17L20.66 7M12 5l-2.4-2.4M12 5l2.4-2.4M12 19l-2.4 2.4M12 19l2.4 2.4"/>
+            </svg>
+          </span>
+          <span id="stormLabel">一起淋雪</span>
+        </button>
+
+        <div class="finale-msg" id="finaleMsg" aria-live="polite">
+          <p class="msg-big">立冬快乐，我的女孩。</p>
+          <p class="msg-small">愿以后的每一个冬天，都有我在你身边。</p>
+        </div>
+
+        <div class="finale-actions" id="finaleActions">
+          <button type="button" id="shareBtn">分享这场雪</button>
+          <button type="button" id="topBtn">回到开头</button>
+        </div>
+
+        <footer class="site-foot">
+          <span>2026 · 立冬</span>
+          <span class="foot-sep" aria-hidden="true"></span>
+          <span>第 19 个节气，和你一起过</span>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- 信的正文：改下面这个 div 里的文字即可 -->
+  <div id="letterSource" hidden>亲爱的穆昱含宝宝：
+
+见字如面。
+
+不知不觉就到立冬了，这是我们在一起的第二个立冬哟！
+我们已经在一起455天啦~
+
+时间过得好快，我们都在大学待两个月了，这么长时间我们都没有见过面嘞。
+但是我觉得并不影响我爱你。
+
+我还是觉得我们宝宝很好很好，
+我们家宝宝还是很可爱很可爱。
+
+所以，我们要过一万个立冬哟。</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
