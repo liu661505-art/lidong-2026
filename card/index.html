@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>立冬·暖语</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        winter: {
+                            light: '#e0f2fe',
+                            DEFAULT: '#bae6fd',
+                            dark: '#0ea5e9',
+                            accent: '#0284c7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['PingFang SC', 'Helvetica Neue', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+            .snowflake {
+                position: absolute;
+                color: #fff;
+                user-select: none;
+                pointer-events: none;
+                animation: fall linear infinite;
+            }
+            .blessing-card {
+                backdrop-filter: blur(8px);
+                transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            }
+            .blessing-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fadeInUp {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-winter-dark to-winter min-h-screen overflow-x-hidden relative">
+    <!-- 雪花动画背景 -->
+    <div id="snow-container" class="fixed inset-0 z-0"></div>
+
+    <!-- 主内容 -->
+    <div class="container mx-auto px-4 py-12 relative z-10">
+        <!-- 标题区域 -->
+        <div class="text-center mb-8 opacity-0 animate-fadeInUp">
+            <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-white text-shadow-lg mb-2">立冬</h1>
+            <p class="text-[clamp(1rem,2vw,1.2rem)] text-winter-light text-shadow">冬之始也 · 万物藏</p>
+        </div>
+
+        <!-- 祝福卡片 -->
+        <div class="max-w-md mx-auto blessing-card bg-white/20 rounded-2xl p-6 md:p-8 border border-white/30 shadow-lg opacity-0 animate-fadeInUp delay-200">
+            <div class="text-center mb-6">
+                <i class="fa fa-snowflake-o text-white text-4xl mb-4"></i>
+                <h2 class="text-[clamp(1.5rem,3vw,2rem)] font-semibold text-white text-shadow" id="nameTitle">致 亲爱的小明</h2>
+            </div>
+
+            <div class="text-white/90 leading-relaxed text-[clamp(1rem,2vw,1.15rem)] mb-6 space-y-3">
+                <p>寒风渐起，岁暮天凉</p>
+                <p>愿你三冬暖，愿你春不寒</p>
+                <p>愿你路上有良人相伴</p>
+                <p>愿你平安喜乐，岁岁无忧</p>
+                <p class="mt-4 text-right italic">—— 立冬安康</p>
+            </div>
+
+            <!-- 互动按钮 -->
+            <div class="flex flex-col sm:flex-row gap-3 justify-center opacity-0 animate-fadeInUp delay-400">
+                <button id="changeNameBtn" class="bg-white/30 hover:bg-white/50 text-white py-3 px-6 rounded-full transition-all flex items-center gap-2">
+                    <i class="fa fa-pencil"></i> 更换姓名
+                </button>
+                <button id="shareBtn" class="bg-white/30 hover:bg-white/50 text-white py-3 px-6 rounded-full transition-all flex items-center gap-2">
+                    <i class="fa fa-share-alt"></i> 分享祝福
+                </button>
+            </div>
+        </div>
+
+        <!-- 节气小知识 -->
+        <div class="max-w-md mx-auto mt-8 bg-white/10 rounded-xl p-5 border border-white/20 opacity-0 animate-fadeInUp delay-500">
+            <h3 class="text-white font-medium mb-2 flex items-center gap-2">
+                <i class="fa fa-bookmark-o"></i> 立冬小记
+            </h3>
+            <p class="text-white/80 text-sm">立冬把秋的余温收进霜里，愿你把生活的暖意藏进心底 —— 寒来有衣，雨来有伞，冬来有我，岁岁长安。</p>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="text-center mt-12 text-white/60 text-sm opacity-0 animate-fadeInUp delay-500">
+            <p>❄️ 愿这个冬天，温暖与你常在 ❄️</p>
+        </div>
+    </div>
+
+    <!-- 姓名输入弹窗 (默认隐藏) -->
+    <div id="nameModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-xl p-6 w-11/12 max-w-sm">
+            <h3 class="text-center text-lg font-semibold mb-4">请输入姓名</h3>
+            <input type="text" id="nameInput" placeholder="例如：小红" class="w-full px-4 py-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-winter-dark">
+            <div class="flex gap-3">
+                <button id="cancelBtn" class="flex-1 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-all">取消</button>
+                <button id="confirmBtn" class="flex-1 py-2 bg-winter-dark text-white rounded-lg hover:bg-winter-accent transition-all">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 生成雪花动画
+        function createSnowflakes() {
+            const container = document.getElementById('snow-container');
+            const count = window.innerWidth < 768 ? 30 : 60; // 适配屏幕数量
+
+            for (let i = 0; i < count; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.innerHTML = '❄️';
+                
+                // 随机位置和大小
+                const size = Math.random() * 15 + 10;
+                snowflake.style.fontSize = `${size}px`;
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.top = `-${size}px`;
+                snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                snowflake.style.animationDelay = `${Math.random() * 5}s`;
+                
+                container.appendChild(snowflake);
+            }
+        }
+
+        // 默认姓名：支持 ?to=姓名 指定（例如 /card/?to=小明），未指定时显示「你」
+        const defaultName = (() => {
+            try {
+                return new URLSearchParams(location.search).get('to') || '你';
+            } catch (e) {
+                return '你';
+            }
+        })();
+        const nameTitle = document.querySelector('.blessing-card h2');
+        nameTitle.textContent = `致 亲爱的${defaultName}`;
+
+        // 更换姓名功能
+        const changeNameBtn = document.getElementById('changeNameBtn');
+        const nameModal = document.getElementById('nameModal');
+        const nameInput = document.getElementById('nameInput');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+
+        changeNameBtn.addEventListener('click', () => {
+            nameModal.classList.remove('hidden');
+            nameInput.focus();
+        });
+
+        cancelBtn.addEventListener('click', () => {
+            nameModal.classList.add('hidden');
+            nameInput.value = '';
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            const name = nameInput.value.trim() || defaultName;  // 为空时使用默认姓名
+            nameTitle.textContent = `致 亲爱的${name}`;
+            nameModal.classList.add('hidden');
+            nameInput.value = '';
+            
+            // 添加强调动画
+            nameTitle.classList.add('scale-110');
+            setTimeout(() => nameTitle.classList.remove('scale-110'), 300);
+        });
+
+        // 分享功能（自动使用当前显示的姓名）
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            const currentName = nameTitle.textContent.replace('致 亲爱的', '') || defaultName;
+            try {
+                if (typeof WeixinJSBridge !== 'undefined') {
+                    // 微信内部分享
+                    WeixinJSBridge.invoke('sendAppMessage', {
+                        title: `给${currentName}的立冬祝福`,
+                        desc: '冬已至，愿温暖常伴',
+                        link: window.location.href,
+                        imgUrl: 'https://picsum.photos/id/237/200/200'
+                    });
+                } else {
+                    alert('请在微信中打开以分享祝福');
+                }
+            } catch (e) {
+                alert('分享功能准备中~');
+            }
+        });
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            createSnowflakes();
+        });
+    </script>
+</body>
+</html>
